@@ -111,6 +111,7 @@ Simple SPA to handle file uploads.
 ## Development
 
 This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See [the documentation](https://yarnpkg.com/lang/en/) to set it up on your machine.
+This project is using Reactjs and Material ui v4
 
 Run the following command to get started
 
