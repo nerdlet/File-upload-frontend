@@ -7,14 +7,13 @@ const LOGIN_MUTATION = gql`
     }
   }
 `;
-
-const UPLOAD_FILE_MUTATION = gql`
+ const UPLOAD_FILE_MUTATION = gql`
   mutation UploadFile($name: String!, $mimeType: String!, $file: Upload!) {
     createFile(name: $name, mimeType: $mimeType, file: $file) {
       id
     }
   }
-`;
+`; 
 
 /* const UPLOAD_FILE_MUTATION = gql`
  mutation UploadFile($name: String!, $mimeType: String!, $file: Upload!) {
@@ -50,7 +49,7 @@ mutation UploadFile($operations: String!, $map: String!, $0: Upload!) {
       file
     }
   }
-`;  */
+`;   */
 
 
 export { LOGIN_MUTATION, UPLOAD_FILE_MUTATION }

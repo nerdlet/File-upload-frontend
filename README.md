@@ -122,8 +122,6 @@ Run the following command to get started
 ```
 ---
 
----
-
 ## License
 
 GNU General Public License v3.0
