@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# File Upload
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Goals
 
-## Available Scripts
+ -  Only  registered  users  can  upload  files.
+ -  The  users  must  be  able  to  search  for  files  by  name,  mime  type  or  fields  in  the  file_metadata.
+ -  Only  a  staff  user  or  a  superuser  can  delete  files.
+ -  Only  a  staff  user  or  a  superuser  can  create  new  users
+ -  Needs  to  validate  the  file  metadata  before  upload,  using  this  json  schema:
 
-In the project directory, you can run:
 
-### `npm start`
+        {
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+	        "$schema":  "https://json-schema.org/draft/2019-09/schema",
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+	        "$id":  "http://example.com/example.json",
 
-### `npm test`
+	        "type":  "object",
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	        "title":  "file  metadata  example",
 
-### `npm run build`
+	        "required":  [
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	            "Gain",
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	            "Battery",
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	            "Datetime",
 
-### `npm run eject`
+	            "FileSize"
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+	        ],
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	        "properties":  {
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+	            "Gain":  {
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+	                "type":  "string",
 
-## Learn More
+	                "title":  "Gain",
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+	                "examples":  [
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+	                    "medium"
 
-### Code Splitting
+	                ]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+	            },
 
-### Analyzing the Bundle Size
+	            "Battery":  {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	                "type":  "string",
 
-### Making a Progressive Web App
+	                "title":  "Battery",
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+	                "examples":  [
 
-### Advanced Configuration
+	                    "4.4V"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+	                ]
 
-### Deployment
+	            },
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+	            "Datetime":  {
 
-### `npm run build` fails to minify
+	                "type":  "string",
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+	                 "pattern":  "^[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])  (0?[0-9]|1[0-9]|2[0123]):(0?[0-9]|[12345][0-9]):(0?[0-9]|[12345][0-9]).([0-9]{6})-([0-9]{4})$",
+
+	                "title":  "file  Datetime",
+
+	                "examples":  [
+
+	                    "2021-08-28  16:10:00.000000-0600"
+
+	                ]
+
+	            },
+
+	            "FileSize":  {
+
+	                "type":  "integer",
+
+	                "title":  "The  FileSize  Schema",
+
+	                "examples":  [
+
+	                    5767168
+
+	                ]
+
+	            }
+
+	        },
+
+	        "examples":  [{
+
+	            "Gain":  "medium",
+
+	            "Battery":  "4.4V",
+
+	            "Datetime":  "2021-08-28  16:10:00.000000-0600",
+
+	            "FileSize":  5767168
+
+	        }]
+
+	    }
+
+
+## Development
+
+This project uses [yarn](https://yarnpkg.com/lang/en/) as a dependancy. See [the documentation](https://yarnpkg.com/lang/en/) to set it up on your machine.
+
+Run the following command to get started
+
+```shell
+    git clone https://github.com/nerdlet/File-upload-frontend.git
+    cd file-upload-frontend
+    yarn install
+    yarn start
+```
+---
+
+---
+
+## License
+
+GNU General Public License v3.0
+
+sensors.AFRICA is a citizen-science focused project by Code for Africa that seeks to address data gaps by providing low cost sensors, which people can use to measure and monitor the quality of the air, water, and environment in their communities. This web app seeks to be the public portal through which most users would discover and explore the data and intiative.
+
+Copyright (C) 2018 Code for Africa
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
